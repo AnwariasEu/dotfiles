@@ -1,0 +1,3 @@
+function vim(){
+	test -w $1 && /usr/bin/vim $1 || sudo /usr/bin/vim $1
+}
