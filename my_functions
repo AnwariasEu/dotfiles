@@ -1,5 +1,5 @@
 function vim(){
-  if [ -f $1 ]; then 
+  if [ -f $1 ]; then
     test -w $1 && /usr/bin/vim $1 || sudo /usr/bin/vim $1
   else
     /usr/bin/vim $1
