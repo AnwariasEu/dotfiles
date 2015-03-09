@@ -2,6 +2,10 @@ function vim(){
   if [ -f $1 ]; then 
     test -w $1 && /usr/bin/vim $1 || sudo /usr/bin/vim $1
   else
-    /usr/bin/vim $1
+    if [ $(touch $1 &> /dev/null) ]; then
+      /usr/bin/vim $1
+    else
+      sudo /usr/bin/vim $1
+    fi
   fi
 }
