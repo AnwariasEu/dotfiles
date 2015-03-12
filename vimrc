@@ -19,7 +19,7 @@ colorscheme desert
 syntax on
 "set nocp
 "filetype indent plugin on
-set softtabstop=2
+"set softtabstop=2
 highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 match ExtraWhitespace /\s\+$\| \t\| \^\t*\zs \+/
 
