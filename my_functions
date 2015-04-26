@@ -19,3 +19,7 @@ man() {
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
 }
+
+function createchecksumfile() {
+find ./ -type f | grep -v .git | grep -v .swp | grep -v .swo | grep -v checklist | xargs md5sum > checklist.chk
+}
