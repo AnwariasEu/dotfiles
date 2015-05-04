@@ -17,9 +17,9 @@ runtime! archlinux.vim
 set nu
 colorscheme desert
 syntax on
-"set nocp
-"filetype indent plugin on
-"set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set expandtab
 highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 match ExtraWhitespace /\s\+$\| \t\| \^\t*\zs \+/
 
