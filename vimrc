@@ -27,6 +27,7 @@ map  <F8> "+ygg<CR>
 map  <F2> :set invnumber<CR>
 map  <F3> ~
 map! <F3> <ESC>~hi
+map  <F4> I#<Esc>
 
 set laststatus=2
 command W w !sudo tee % >/dev/null
