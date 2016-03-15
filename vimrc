@@ -36,3 +36,9 @@ map  <F4> I#<Esc>
 
 set laststatus=2
 command W w !sudo tee % >/dev/null
+
+" Shows changes made since last write
+if !exists(":DiffOrig")
+      command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+              \ | wincmd p | diffthis
+endif
