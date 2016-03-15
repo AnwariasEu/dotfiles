@@ -14,12 +14,17 @@ runtime! archlinux.vim
 " Or better yet, read /usr/share/vim/vim74/vimrc_example.vim or the vim manual
 " and configure vim to your own liking!
 
+" Enable line numbers
 set nu
+
 colorscheme desert
 syntax on
+" Use spaces instead of tabs 
+set expandtab
+" One tab == 4 spaces
 set tabstop=4
 set shiftwidth=4
-set expandtab
+
 highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 match ExtraWhitespace /\s\+$\| \t\| \^\t*\zs \+/
 
