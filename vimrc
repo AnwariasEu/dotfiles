@@ -15,7 +15,7 @@ runtime! archlinux.vim
 " and configure vim to your own liking!
 
 set nu
-colorscheme desert
+colorscheme delek
 syntax on
 set tabstop=4
 set shiftwidth=4
