@@ -14,9 +14,13 @@ runtime! archlinux.vim
 " Or better yet, read /usr/share/vim/vim74/vimrc_example.vim or the vim manual
 " and configure vim to your own liking!
 
+" Enable line numbers
 set nu
 colorscheme delek
 syntax on
+" Use spaces instead of tabs 
+set expandtab
+" One tab == 4 spaces
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -31,3 +35,9 @@ map  <F4> I#<Esc>
 
 set laststatus=2
 command W w !sudo tee % >/dev/null
+
+" Shows changes made since last write
+if !exists(":DiffOrig")
+      command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+              \ | wincmd p | diffthis
+endif
