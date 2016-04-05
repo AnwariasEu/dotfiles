@@ -162,6 +162,8 @@ bindsym 0xff98 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotif
 bindsym 0xff96 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 # lock on calculator(media key)
 bindsym 0x1008ff1d exec /usr/local/bin/screenlocker.sh
+# screenshot on print
+bindsum 0xff61 exec shutter -f
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -171,9 +173,12 @@ bar {
 }
 
 bindsym $mod+l exec /usr/local/bin/screenlocker.sh
+bindsym $mod+p exec ~/.local/bin/focus-last.py
 
 # Dualscreen settings
 exec --no-startup-id xrandr --output HDMI1 --auto --left-of HDMI2
+# Desktop Background
+exec --no-startup-id nitrogen --restore
 
 # Default placement of workspaces
  workspace 1 output HDMI1
