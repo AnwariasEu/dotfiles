@@ -165,11 +165,15 @@ bindsym 0x1008ff1d exec /usr/local/bin/screenlocker.sh
 # screenshot on print
 bindsum 0xff61 exec shutter -f
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# py3status bar on left screen
 bar {
-        tray_output primary
-        status_command /usr/local/bin/i3status.sh
+        status_command py3status -c ~/.i3/status-left.conf
+        output HDMI1
+}
+# py3status bar on right screen
+bar {
+        status_command py3status -c ~/.i3/status-right.conf
+        output HDMI2
 }
 
 bindsym $mod+l exec /usr/local/bin/screenlocker.sh
