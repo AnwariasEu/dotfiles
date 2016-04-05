@@ -196,20 +196,36 @@ exec --no-startup-id nitrogen --restore
  workspace 9 output HDMI2
 
 # Startup Programs
-exec --no-startup-id i3-msg 'workspace 1: Web; exec /usr/bin/firefox; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace $tag1; exec /usr/bin/firefox'
 #exec --no-startup-id i3-msg 'workspace 2: Mail; append_layout /home/christian/.i3/workspace-2.json; exec /usr/bin/thunderbird; exec /usr/bin/pidgin; move workspace to output left'
-exec --no-startup-id i3-msg 'workspace 2: Mail; exec /usr/bin/thunderbird; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace $tag2; exec /usr/bin/thunderbird'
 #exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/keepass /home/christian/Comsys.kdbx'
 
 exec --no-startup-id exec pulseaudio
-exec --no-startup-id i3-msg exec /usr/bin/spotify
+#exec --no-startup-id i3-msg exec /usr/bin/spotify
 
 exec --no-startup-id exec xautolock -time 3 -locker /usr/local/bin/screenlocker.sh
+exec --no-startup-id exec /usr/bin/guake -h
+exec --no-startup-id exec /usr/bin/keepassx2
+exec --no-startup-id exec /usr/bin/remmina
 
 
 # Catch bugged Windows
-exec --no-startup-id i3-msg 'workspace 3; move workspace to output right; rename workspace 3 to "3: Spotify"'
+exec --no-startup-id i3-msg 'workspace $tag3; move workspace to output right; exec /usr/bin/spotify'
 #exec --no-startup-id i3-msg 'workspace 3: Spotify'
-for_window [class="Spotify"] layout tabbed
-assign [class="Spotify"] → "3: Spotify"
+for_window [class="^Spotify$"] layout tabbed
+#assign [class="^Spotify$"] $tag3
+for_window [class="^Spotify$"] move container to workspace $tag3
+
+# Guake floating window
+for_window [class="Main.py"] floating enable
+
+# Shutter floating window
+for_window [class="^Shutter$"] floating enable
+
+#for_window [classs="Remmina"] layout tabbed
+for_window [title="^Ares$"] move to workspace $tag9
+for_window [title="^Argos$"] move to workspace $tag9
+for_window [title="^Install$"] move to workspace $tag9
+for_window [title="^Remmina\\ Remote\\ Desktop\\ Client$"] move to workspace $tag10
 #for_window [class="Spotify"] layout default
