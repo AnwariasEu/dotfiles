@@ -36,6 +36,13 @@ map  <F4> I#<Esc>
 
 set laststatus=2
 command W w !sudo tee % >/dev/null
+command Maketex :!pdflatex %
+
+" Always show 10 lines above and underneath current line
+set scrolloff=10
+
+" Disable mouse input
+set mouse=c
 
 " Shows changes made since last write
 if !exists(":DiffOrig")
