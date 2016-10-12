@@ -16,15 +16,14 @@ runtime! archlinux.vim
 
 " Enable line numbers
 set nu
-
-colorscheme desert
+colorscheme delek
 syntax on
 " Use spaces instead of tabs 
 set expandtab
 " One tab == 4 spaces
 set tabstop=4
 set shiftwidth=4
-
+set expandtab
 highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 match ExtraWhitespace /\s\+$\| \t\| \^\t*\zs \+/
 

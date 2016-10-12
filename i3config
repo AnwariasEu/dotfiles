@@ -83,29 +83,41 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+#Tag every workspace
+set $tag1 "1: Web"
+set $tag2 "2: Mail"
+set $tag3 "3: Spotify"
+set $tag4 "4: Term"
+set $tag5 "5: Term"
+set $tag6 "6: Term"
+set $tag7 "7: Term"
+set $tag8 "8: Term"
+set $tag9 "9: Term"
+set $tag10 "0: KeePass/Remmina"
+
 # switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+bindsym $mod+1 workspace $tag1
+bindsym $mod+2 workspace $tag2
+bindsym $mod+3 workspace $tag3
+bindsym $mod+4 workspace $tag4
+bindsym $mod+5 workspace $tag5
+bindsym $mod+6 workspace $tag6
+bindsym $mod+7 workspace $tag7
+bindsym $mod+8 workspace $tag8
+bindsym $mod+9 workspace $tag9
+bindsym $mod+0 workspace $tag10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+1 move container to workspace $tag1
+bindsym $mod+Shift+2 move container to workspace $tag2
+bindsym $mod+Shift+3 move container to workspace $tag3
+bindsym $mod+Shift+4 move container to workspace $tag4
+bindsym $mod+Shift+5 move container to workspace $tag5
+bindsym $mod+Shift+6 move container to workspace $tag6
+bindsym $mod+Shift+7 move container to workspace $tag7
+bindsym $mod+Shift+8 move container to workspace $tag8
+bindsym $mod+Shift+9 move container to workspace $tag9
+bindsym $mod+Shift+0 move container to workspace $tag10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -150,18 +162,27 @@ bindsym 0xff98 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotif
 bindsym 0xff96 exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 # lock on calculator(media key)
 bindsym 0x1008ff1d exec /usr/local/bin/screenlocker.sh
+# screenshot on print
+bindsum 0xff61 exec shutter -f
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# py3status bar on left screen
 bar {
-        tray_output primary
-        status_command /usr/local/bin/i3status.sh
+        status_command py3status -c ~/.i3/status-left.conf
+        output HDMI1
+}
+# py3status bar on right screen
+bar {
+        status_command py3status -c ~/.i3/status-right.conf
+        output HDMI2
 }
 
 bindsym $mod+l exec /usr/local/bin/screenlocker.sh
+bindsym $mod+p exec ~/.local/bin/focus-last.py
 
 # Dualscreen settings
 exec --no-startup-id xrandr --output HDMI1 --auto --left-of HDMI2
+# Desktop Background
+exec --no-startup-id nitrogen --restore
 
 # Default placement of workspaces
  workspace 1 output HDMI1
@@ -175,20 +196,36 @@ exec --no-startup-id xrandr --output HDMI1 --auto --left-of HDMI2
  workspace 9 output HDMI2
 
 # Startup Programs
-exec --no-startup-id i3-msg 'workspace 1: Web; exec /usr/bin/firefox; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace $tag1; exec /usr/bin/firefox'
 #exec --no-startup-id i3-msg 'workspace 2: Mail; append_layout /home/christian/.i3/workspace-2.json; exec /usr/bin/thunderbird; exec /usr/bin/pidgin; move workspace to output left'
-exec --no-startup-id i3-msg 'workspace 2: Mail; exec /usr/bin/thunderbird; move workspace to output left'
+exec --no-startup-id i3-msg 'workspace $tag2; exec /usr/bin/thunderbird'
 #exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/keepass /home/christian/Comsys.kdbx'
 
 exec --no-startup-id exec pulseaudio
-exec --no-startup-id i3-msg exec /usr/bin/spotify
+#exec --no-startup-id i3-msg exec /usr/bin/spotify
 
 exec --no-startup-id exec xautolock -time 3 -locker /usr/local/bin/screenlocker.sh
+exec --no-startup-id exec /usr/bin/guake -h
+exec --no-startup-id exec /usr/bin/keepassx2
+exec --no-startup-id exec /usr/bin/remmina
 
 
 # Catch bugged Windows
-exec --no-startup-id i3-msg 'workspace 3; move workspace to output right; rename workspace 3 to "3: Spotify"'
+exec --no-startup-id i3-msg 'workspace $tag3; move workspace to output right; exec /usr/bin/spotify'
 #exec --no-startup-id i3-msg 'workspace 3: Spotify'
-for_window [class="Spotify"] layout tabbed
-assign [class="Spotify"] → "3: Spotify"
+for_window [class="^Spotify$"] layout tabbed
+#assign [class="^Spotify$"] $tag3
+for_window [class="^Spotify$"] move container to workspace $tag3
+
+# Guake floating window
+for_window [class="Main.py"] floating enable
+
+# Shutter floating window
+for_window [class="^Shutter$"] floating enable
+
+#for_window [classs="Remmina"] layout tabbed
+for_window [title="^Ares$"] move to workspace $tag9
+for_window [title="^Argos$"] move to workspace $tag9
+for_window [title="^Install$"] move to workspace $tag9
+for_window [title="^Remmina\\ Remote\\ Desktop\\ Client$"] move to workspace $tag10
 #for_window [class="Spotify"] layout default
