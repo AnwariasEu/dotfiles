@@ -48,3 +48,8 @@ if !exists(":DiffOrig")
       command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
               \ | wincmd p | diffthis
 endif
+
+" Shows fancy chars when using vim
+scriptencoding utf-8
+set encoding=utf-8
+set listchars=tab:↹\ ,eol:↵,trail:•
