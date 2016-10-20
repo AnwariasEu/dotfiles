@@ -35,6 +35,7 @@ map  <F2> :set invnumber<CR>
 map  <F3> ~
 map! <F3> <ESC>~hi
 map  <F4> I#<Esc>
+map  <F6> :set invlist<CR>
 
 " Run current python script
 nnoremap <buffer> <F9> :w<cr>:exec '!python' shellescape(@%, 1)<cr>
