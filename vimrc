@@ -36,6 +36,12 @@ map  <F3> ~
 map! <F3> <ESC>~hi
 map  <F4> I#<Esc>
 
+" Run current python script
+nnoremap <buffer> <F9> :w<cr>:exec '!python' shellescape(@%, 1)<cr>
+
+" Make Latex 
+nnoremap <buffer> <F8> :w<cr>:exec '!pdflatex' shellescape(@%, 1)<cr>
+
 set laststatus=2
 command W w !sudo tee % >/dev/null
 
