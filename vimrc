@@ -27,6 +27,9 @@ set expandtab
 highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
 match ExtraWhitespace /\s\+$\| \t\| \^\t*\zs \+/
 
+" Disable mouse interaction
+set mouse=c
+
 map  <F8> "+ygg<CR>
 map  <F2> :set invnumber<CR>
 map  <F3> ~
