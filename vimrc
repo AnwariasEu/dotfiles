@@ -41,14 +41,28 @@ nnoremap <buffer> <F9> :w<cr>:exec '!python' shellescape(@%, 1)<cr>
 
 " Make Latex 
 nnoremap <buffer> <F8> :w<cr>:exec '!pdflatex' shellescape(@%, 1)<cr>
+command Maketex :!pdflatex %
 
 set laststatus=2
+
 if !exists(":W")
     command W w !sudo tee % >/dev/null
 endif
+
+
+" Always show 10 lines above and underneath current line
+set scrolloff=10
+
+" Disable mouse input
+set mouse=c
 
 " Shows changes made since last write
 if !exists(":DiffOrig")
       command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
               \ | wincmd p | diffthis
 endif
+
+" Shows fancy chars when using vim
+scriptencoding utf-8
+set encoding=utf-8
+set listchars=tab:↹\ ,eol:↵,trail:•
