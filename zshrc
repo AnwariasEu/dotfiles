@@ -9,7 +9,7 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 fi
 
 # Add ~/bin to path
-export PATH="~/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 # Comand autocompletion
 autoload -Uz compinit promptinit

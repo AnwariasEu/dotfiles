@@ -18,14 +18,13 @@ runtime! archlinux.vim
 set nu
 colorscheme delek
 syntax on
-" Use spaces instead of tabs 
-set expandtab
+" Use spaces instead of tabs
+" set expandtab
 " One tab == 4 spaces
-set tabstop=4
-set shiftwidth=4
-set expandtab
-highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
-match ExtraWhitespace /\s\+$\| \t\| \^\t*\zs \+/
+set tabstop=2
+set shiftwidth=2
+"highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+"match ExtraWhitespace /\s\+$\| \t\| \^\t*\zs \+/
 
 " Disable mouse interaction
 set mouse=c
@@ -34,11 +33,11 @@ map  <F8> "+ygg<CR>
 map  <F2> :set invnumber<CR>
 map  <F3> ~
 map! <F3> <ESC>~hi
-map  <F4> I#<Esc>
+map  <F4> \ci
 map  <F6> :set invlist<CR>
 
 " Run current python script
-nnoremap <buffer> <F9> :w<cr>:exec '!python' shellescape(@%, 1)<cr>
+nnoremap <buffer> <F9> :w<cr>:! ./%<cr>
 
 " Make Latex 
 nnoremap <buffer> <F8> :w<cr>:exec '!pdflatex' shellescape(@%, 1)<cr>
@@ -58,7 +57,11 @@ if !exists(":DiffOrig")
               \ | wincmd p | diffthis
 endif
 
+" Traverse line breaks with arrow keys
+set whichwrap=b,s,<,>,[,]
+
 " Shows fancy chars when using vim
 scriptencoding utf-8
 set encoding=utf-8
 set listchars=tab:↹\ ,eol:↵,trail:•
+filetype plugin on
