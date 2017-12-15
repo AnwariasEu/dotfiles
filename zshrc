@@ -42,9 +42,10 @@ export EDITOR=vim
 source ~/.my-aliases
 
 # Functions
-
 source ~/.my-functions
 
+# Gurobi
+source ~/.gurobi-env
 
 # Zsh Syntax Highlighting
 # source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
