@@ -60,6 +60,9 @@ endif
 " Traverse line breaks with arrow keys
 set whichwrap=b,s,<,>,[,]
 
+" Fix Powerline
+let g:powerline_pycmd = 'py3'
+
 " Shows fancy chars when using vim
 scriptencoding utf-8
 set encoding=utf-8
