@@ -69,3 +69,10 @@ scriptencoding utf-8
 set encoding=utf-8
 set listchars=tab:↹\ ,eol:↵,trail:•
 filetype plugin on
+
+" Disable Arrow keys and make them usefule
+" Destroy arrow keys in insert mode
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
