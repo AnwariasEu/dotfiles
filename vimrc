@@ -90,3 +90,8 @@ vmap <Right> >gv
 
 " Mark 80th Character of any File red
 set colorcolumn=80
+
+" Enable vim undo file
+set undofile
+" Undofile directorypath
+set undodir=$HOME/.vimundo/
