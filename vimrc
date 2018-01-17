@@ -87,3 +87,6 @@ noremap <Right> >>
 " Keep visual after action
 vmap <Left> <gv
 vmap <Right> >gv
+
+" Mark 80th Character of any File red
+set colorcolumn=80
