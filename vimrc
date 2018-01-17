@@ -35,6 +35,7 @@ map  <F3> ~
 map! <F3> <ESC>~hi
 map  <F4> \ci
 map  <F6> :set invlist<CR>
+nnoremap <F9> :IndentGuidesToggle<CR>
 
 " Run current python script
 nnoremap <buffer> <F9> :w<cr>:! ./%<cr>
