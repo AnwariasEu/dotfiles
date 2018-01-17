@@ -76,3 +76,14 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+
+" Make arrow keys useful
+" Move line up/down
+noremap <Up> ddkP
+noremap <Down> ddp
+" Indent line(s)
+noremap <Left> <<
+noremap <Right> >>
+" Keep visual after action
+vmap <Left> <gv
+vmap <Right> >gv
